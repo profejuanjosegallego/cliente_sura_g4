@@ -1,9 +1,13 @@
-import {pacientesSimulados} from "../data/simuladorPacientes.js"
+//import {pacientesSimulados} from "../data/simuladorPacientes.js"
 
-let fila=document.getElementById("fila")
+import {consultarPacientes} from "../services/serviciosPaciente.js"
+
+consultarPacientes()
+.then(function(respuestaBack){
+    let fila=document.getElementById("fila")
 
 //Debo recorrer los datos de la BD para pintarlos
-pacientesSimulados.forEach(function(paciente){
+respuestaBack.forEach(function(paciente){
     console.log(paciente)
     //APLICANDO TRAVERSING
 
@@ -79,3 +83,7 @@ pacientesSimulados.forEach(function(paciente){
 
 
 })
+})
+
+
+

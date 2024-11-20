@@ -1,3 +1,6 @@
+import {guardarPaciente} from "../services/serviciosPaciente.js"
+
+
 //controlador=archivo de js para manipular la interfaz grafica
 
 //OBJETIVO=RECOGER los datos de un formulario
@@ -30,16 +33,21 @@ botonRegistroPaciente.addEventListener("click",function(evento){
         correo:cajaCorreo.value,
         telefono:cajaTelefono.value,
         ips:cajaIPS.value,
-        tienePoliza:cajaAsegurado.value,
+        tienePoliza:true,
         grupoIngreso:cajaGrupoIngreso.value,
         fechaAfiliacion:cajaFechaAfiliacion.value
     }
 
-    console.log(datosFormularioPaciente)
+    guardarPaciente(datosFormularioPaciente)
+    .then(function(respuestaBack){
+        console.log(respuestaBack)
+        Swal.fire({
+            title: "Buen trabajo!",
+            text: "Ya haces parte de nuestra familia!",
+            icon: "success"
+          });
+        
+    })
 
-    Swal.fire({
-        title: "Buen trabajo!",
-        text: "Ya haces parte de nuestra familia!",
-        icon: "success"
-      });
+    
 })
